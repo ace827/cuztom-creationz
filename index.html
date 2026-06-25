@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuztom Creationz Paint & Body Shop | Fort Worth Auto Repair</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Variables */
+    :root {
+      --ink: #1a1a1a;
+      --ink2: #2d2d2d;
+      --ink3: #3a3a3a;
+      --orange: #d95319;
+      --orange2: #e85c2a;
+      --orange3: #c24316;
+      --off: #f9f7f4;
+      --warm: #f0ede8;
+      --border: #e5e0d8;
+      --mid: #7a7a7a;
+      --dark: #404040;
+      --card: #fafaf8;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    h1 { font-size: clamp(2rem, 6vw, 5rem); }
+    h2 { font-size: clamp(1.6rem, 4vw, 3rem); }
+    h3 { font-size: clamp(1.1rem, 2.5vw, 1.6rem); }
+    h4 { font-size: 1.3rem; }
+
+    /* Top Bar */
+    .top-bar {
+      background: var(--ink2);
+      color: var(--white);
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .top-bar-left {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .top-bar-info {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .top-bar svg {
+      width: 16px;
+      height: 16px;
+      color: var(--orange);
+    }
+
+    .top-bar-cta {
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-size: 0.9rem;
+      transition: background 0.3s ease;
+    }
+
+    .top-bar-cta:hover {
+      background: var(--orange2);
+    }
+
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .top-bar-left {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .top-bar-cta {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      background: rgba(26, 26, 26, 0.92);
+      backdrop-filter: blur(12px);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      padding: 1rem 2rem;
+    }
+
+    nav.scrolled {
+      background: rgba(26, 26, 26, 0.98);
+      box-shadow: 0 2px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 1.3rem;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .nav-logo svg {
+      width: 32px;
+      height: 32px;
+      color: var(--orange);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.7rem 1.4rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange2);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--white);
+      width: 28px;
+      height: 28px;
+    }
+
+    .hamburger span {
+      width: 100%;
+      height: 3px;
+      background: var(--orange);
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .nav-cta {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .nav-mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(26, 26, 26, 0.98);
+        z-index: 800;
+        padding: 6rem 2rem 2rem;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .nav-mobile-menu.active {
+        display: flex;
+      }
+      .nav-mobile-menu a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.2rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .nav-mobile-menu .nav-cta {
+        display: block;
+        text-align: center;
+        margin-top: 1rem;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      margin-top: 60px;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.pexels.com/photos/37809560/pexels-photo-37809560.jpeg?auto=compress&cs=tinysrgb&w=1920');
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+
+    .hero-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.25) 35%,
+        rgba(0, 0, 0, 0.55) 65%,
+        rgba(0, 0, 0, 0.88) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 2rem;
+      margin-bottom: 8vh;
+    }
+
+    .hero h1 {
+      color: var(--white);
+      margin-bottom: 1rem;
+      font-weight: 900;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 300;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--orange2);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-secondary:hover {
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .hero-info-card {
+      background: rgba(26, 26, 26, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 8px;
+      display: inline-block;
+      border-left: 4px solid var(--orange);
+    }
+
+    .hero-info-card p {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .hero-info-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .hero-info-card svg {
+      width: 20px;
+      height: 20px;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 80vh;
+        margin-top: 140px;
+      }
+      .hero-content {
+        margin-bottom: 4vh;
+      }
+      .hero-buttons {
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* Stats Band */
+    .stats {
+      background: var(--orange);
+      color: var(--white);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .stats-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-item h3 {
+      color: var(--white);
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-item p {
+      font-size: 1rem;
+      opacity: 0.95;
+    }
+
+    @media (max-width: 1024px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        gap: 1rem;
+      }
+      .stat-item h3 {
+        font-size: 1.8rem;
+      }
+      .stat-item p {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* How It Works */
+    .how-it-works {
+      background: var(--off);
+      padding: 4rem 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: var(--orange);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .step h4 {
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    .step p {
+      color: var(--mid);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1024px) {
+      .how-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .how-grid {
+        grid-template-columns: 1fr;
+      }
+      .how-it-works {
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    /* Services Section */
+    .services {
+      background: var(--white);
+      padding: 4rem 2rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+
+    .service-icon svg {
+      width: 32px;
+      height: 32px;
+      color: var(--white);
+    }
+
+    .service-card h4 {
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      color: var(--mid);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .service-list {
+      text-align: left;
+      color: var(--dark);
+      font-size: 0.9rem;
+    }
+
+    .service-list li {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .service-list svg {
+      width: 18px;
+      height: 18px;
+      color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .services {
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    /* Why Independent */
+    .why-independent {
+      background: var(--ink);
+      color: var(--white);
+      padding: 4rem 2rem;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .why-col h3 {
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+
+    .why-col ul {
+      list-style: none;
+    }
+
+    .why-col li {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .why-col svg {
+      width: 24px;
+      height: 24px;
+      color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .why-col.cons li svg {
+      color: #c1410c;
+    }
+
+    .why-col p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .why-independent {
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    /* About Section */
+    .about {
+      background: var(--off);
+      padding: 4rem 2rem;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .about-img {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-text h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text ul {
+      list-style: none;
+    }
+
+    .about-text li {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .about-text svg {
+      width: 22px;
+      height: 22px;
+      color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .about-text p {
+      color: var(--mid);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .about-img {
+        aspect-ratio: 16/9;
+      }
+      .about {
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    /* Reviews */
+    .reviews {
+      background: var(--ink);
+      color: var(--white);
+      padding: 4rem 2rem;
+    }
+
+    .reviews-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .reviews-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--white);
+    }
+
+    .featured-review {
+      background: rgba(255, 255, 255, 0.08);
+      border-left: 4px solid var(--orange);
+      padding: 2.5rem;
+      border-radius: 8px;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .featured-review .stars {
+      margin-bottom: 1rem;
+    }
+
+    .featured-review .stars svg {
+      width: 24px;
+      height: 24px;
+      color: var(--orange);
+      display: inline;
+      margin: 0 2px;
+    }
+
+    .featured-review p {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .featured-review .reviewer {
+      font-weight: 600;
+      color: var(--orange);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .review-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .review-card .stars svg {
+      width: 18px;
+      height: 18px;
+      color: var(--orange);
+      display: inline;
+      margin-right: 2px;
+    }
+
+    .review-card p {
+      margin-top: 1rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .review-author {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 1024px) {
+      .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+      .reviews {
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    /* FAQ */
+    .faq {
+      background: var(--off);
+      padding: 4rem 2rem;
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .accordion {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-header {
+      background: var(--white);
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .accordion-header:hover {
+      background: var(--warm);
+    }
+
+    .accordion-header svg {
+      width: 24px;
+      height: 24px;
+      color: var(--orange);
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-header.active svg {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 1.5rem;
+      background: rgba(208, 83, 25, 0.03);
+      color: var(--mid);
+      line-height: 1.8;
+    }
+
+    .accordion-content.active {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .faq {
+        padding: 3rem 1.5rem;
+      }
+      .accordion-header {
+        padding: 1.2rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* Service Area */
+    .service-area {
+      background: var(--white);
+      padding: 4rem 2rem;
+    }
+
+    .service-area-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service-area-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .neighborhoods {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .neighborhood {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--orange);
+    }
+
+    .neighborhood h4 {
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .neighborhood p {
+      color: var(--mid);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .neighborhoods {
+        grid-template-columns: 1fr;
+      }
+      .service-area {
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    /* CTA Band */
+    .cta-band {
+      background: var(--orange);
+      color: var(--white);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-band p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-phone {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .cta-band {
+        padding: 2rem 1.5rem;
+      }
+      .cta-phone {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Contact Section */
+    .contact {
+      background: var(--off);
+      padding: 4rem 2rem;
+    }
+
+    .contact-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info h3 {
+      margin-bottom: 1.5rem;
+    }
+
+    .hours-table {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours-table td {
+      padding: 0.8rem 0;
+    }
+
+    .hours-table td:first-child {
+      font-weight: 600;
+      color: var(--ink);
+      width: 40%;
+    }
+
+    .hours-table td:last-child {
+      color: var(--mid);
+      text-align: right;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--dark);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(208, 83, 25, 0.1);
+    }
+
+    .form-submit {
+      background: var(--orange);
+      color: var(--white);
+      padding: 1rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .form-submit:hover {
+      background: var(--orange2);
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .contact {
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      color: var(--white);
+      padding: 3rem 2rem 1.5rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand h3 {
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    .footer-links h4 {
+      color: var(--white);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--orange);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      footer {
+        padding: 2rem 1.5rem 1rem;
+      }
+    }
+
+    /* Animations */
+    .reveal, .rl, .rr {
+      opacity: 0;
+    }
+
+    .reveal.in {
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .rl.in {
+      animation: slideLeft 0.8s ease forwards;
+    }
+
+    .rr.in {
+      animation: slideRight 0.8s ease forwards;
+    }
+
+    .d1.in { animation-delay: 0.1s; }
+    .d2.in { animation-delay: 0.2s; }
+    .d3.in { animation-delay: 0.3s; }
+    .d4.in { animation-delay: 0.4s; }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- SVG Icon Sprite -->
+  <svg style="display: none;">
+    <defs>
+      <symbol id="i-phone" viewBox="0 0 24 24">
+        <path d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 18c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm5-3H7V4h10v13z" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5z" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-5-3v-4.9z" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-star" viewBox="0 0 24 24">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.81 6.63L2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-chevron-down" viewBox="0 0 24 24">
+        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24">
+        <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5.1-1.5-7-2.5-2.5-6.6-2.5-9.1 0-2.5 2.5-2.5 6.6 0 9.1 1.9 1.9 4.7 2.4 7 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.4-.4.4-1 0-1.4z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24">
+        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      </symbol>
+      <symbol id="i-x" viewBox="0 0 24 24">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-oil" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      </symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24">
+        <path d="M13 2H3v10h3v8l8-9h3V2z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <div class="top-bar-info">
+        <svg><use href="#i-pin"/></svg>
+        <span>2617 NW 17th St Suite A, Fort Worth, TX 76106</span>
+      </div>
+      <div class="top-bar-info">
+        <svg><use href="#i-clock"/></svg>
+        <span>Open Mon-Fri 8am-5pm, Sat 9am-3pm</span>
+      </div>
+    </div>
+    <a href="tel:8178198801" class="top-bar-cta">Call (817) 819-8801</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <svg><use href="#i-wrench"/></svg>
+        Cuztom Creationz
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="tel:8178198801" class="nav-cta">Call Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:8178198801" class="nav-cta">Call Us</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-img"></div>
+    <div class="hero-content">
+      <h1 class="reveal">Expert Paint & Body Work</h1>
+      <p class="hero-subtitle reveal d1">Professional restoration and repair you can trust</p>
+      <div class="hero-buttons reveal d2">
+        <a href="tel:8178198801" class="btn btn-primary">Call Now</a>
+        <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+      </div>
+      <div class="hero-info-card reveal d3">
+        <p><svg><use href="#i-star"/></svg> 4.9 Stars (14 Reviews)</p>
+        <p><svg><use href="#i-check"/></svg> All Makes & Models</p>
+        <p><svg><use href="#i-shield"/></svg> 100% Honest Pricing</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Band -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <h3>4.9★</h3>
+        <p>Customer Rating</p>
+      </div>
+      <div class="stat-item">
+        <h3>14+</h3>
+        <p>Five-Star Reviews</p>
+      </div>
+      <div class="stat-item">
+        <h3>All</h3>
+        <p>Makes & Models</p>
+      </div>
+      <div class="stat-item">
+        <h3>✓</h3>
+        <p>100% Honest Pricing</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title reveal">How It Works</h2>
+      <div class="how-grid">
+        <div class="step reveal d1">
+          <div class="step-number">1</div>
+          <h4>Call</h4>
+          <p>Reach out and describe your vehicle and any issues you're experiencing.</p>
+        </div>
+        <div class="step reveal d2">
+          <div class="step-number">2</div>
+          <h4>Diagnose</h4>
+          <p>We inspect your vehicle thoroughly and provide an honest assessment.</p>
+        </div>
+        <div class="step reveal d3">
+          <div class="step-number">3</div>
+          <h4>Approve Quote</h4>
+          <p>You'll get a detailed estimate. We'll never start work without your approval.</p>
+        </div>
+        <div class="step reveal d4">
+          <div class="step-number">4</div>
+          <h4>Pick Up</h4>
+          <p>Your vehicle is ready when promised, looking and running better than ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title reveal">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card reveal d1">
+          <div class="service-icon">
+            <svg><use href="#i-wrench"/></svg>
+          </div>
+          <h4>Paint & Body Work</h4>
+          <p>Expert collision repair and custom paint matching for flawless results.</p>
+          <ul class="service-list">
+            <li><svg><use href="#i-check"/></svg> Dent Removal</li>
+            <li><svg><use href="#i-check"/></svg> Paint Matching</li>
+            <li><svg><use href="#i-check"/></svg> Panel Replacement</li>
+          </ul>
+        </div>
+        <div class="service-card reveal d2">
+          <div class="service-icon">
+            <svg><use href="#i-bolt"/></svg>
+          </div>
+          <h4>Detailing & Polishing</h4>
+          <p>Professional finishing touches that make your vehicle shine like new.</p>
+          <ul class="service-list">
+            <li><svg><use href="#i-check"/></svg> Full Detailing</li>
+            <li><svg><use href="#i-check"/></svg> Ceramic Coating</li>
+            <li><svg><use href="#i-check"/></svg> Buff & Polish</li>
+          </ul>
+        </div>
+        <div class="service-card reveal d3">
+          <div class="service-icon">
+            <svg><use href="#i-shield"/></svg>
+          </div>
+          <h4>General Repair</h4>
+          <p>Comprehensive mechanical and electrical repairs for all vehicle types.</p>
+          <ul class="service-list">
+            <li><svg><use href="#i-check"/></svg> Mechanical Work</li>
+            <li><svg><use href="#i-check"/></svg> Electrical Systems</li>
+            <li><svg><use href="#i-check"/></svg> Diagnostics</li>
+          </ul>
+        </div>
+        <div class="service-card reveal d1">
+          <div class="service-icon">
+            <svg><use href="#i-oil"/></svg>
+          </div>
+          <h4>Oil & Maintenance</h4>
+          <p>Keep your vehicle running smoothly with regular maintenance services.</p>
+          <ul class="service-list">
+            <li><svg><use href="#i-check"/></svg> Oil Changes</li>
+            <li><svg><use href="#i-check"/></svg> Fluid Flushes</li>
+            <li><svg><use href="#i-check"/></svg> Filter Replacement</li>
+          </ul>
+        </div>
+        <div class="service-card reveal d2">
+          <div class="service-icon">
+            <svg><use href="#i-wrench"/></svg>
+          </div>
+          <h4>Suspension & Brakes</h4>
+          <p>Ensure safety and performance with expert suspension and brake work.</p>
+          <ul class="service-list">
+            <li><svg><use href="#i-check"/></svg> Brake Pads</li>
+            <li><svg><use href="#i-check"/></svg> Suspension Repairs</li>
+            <li><svg><use href="#i-check"/></svg> Wheel Alignment</li>
+          </ul>
+        </div>
+        <div class="service-card reveal d3">
+          <div class="service-icon">
+            <svg><use href="#i-bolt"/></svg>
+          </div>
+          <h4>Custom Work</h4>
+          <p>Bring your vision to life with custom modifications and upgrades.</p>
+          <ul class="service-list">
+            <li><svg><use href="#i-check"/></svg> Custom Modifications</li>
+            <li><svg><use href="#i-check"/></svg> Interior Upgrades</li>
+            <li><svg><use href="#i-check"/></svg> Specialty Paint</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Independent Shop -->
+  <section class="why-independent">
+    <div class="container">
+      <h2 class="section-title reveal" style="color: white; margin-bottom: 2rem;">Why Choose an Independent Shop?</h2>
+      <div class="why-grid">
+        <div class="why-col cons reveal rl">
+          <h3>Dealerships & Chains</h3>
+          <ul>
+            <li><svg><use href="#i-x"/></svg> <span>Inflated labor rates</span></li>
+            <li><svg><use href="#i-x"/></svg> <span>Generic service with no personal touch</span></li>
+            <li><svg><use href="#i-x"/></svg> <span>Limited transparency on pricing</span></li>
+            <li><svg><use href="#i-x"/></svg> <span>Pressure to do unnecessary work</span></li>
+            <li><svg><use href="#i-x"/></svg> <span>Long wait times and delays</span></li>
+          </ul>
+        </div>
+        <div class="why-col reveal rr">
+          <h3>Cuztom Creationz</h3>
+          <ul>
+            <li><svg><use href="#i-check"/></svg> <span>Fair, transparent pricing</span></li>
+            <li><svg><use href="#i-check"/></svg> <span>Personal relationships with owner</span></li>
+            <li><svg><use href="#i-check"/></svg> <span>100% honest about what's needed</span></li>
+            <li><svg><use href="#i-check"/></svg> <span>Only recommend necessary repairs</span></li>
+            <li><svg><use href="#i-check"/></svg> <span>Fast turnaround on most jobs</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title reveal">About Cuztom Creationz</h2>
+      <div class="about-content">
+        <div class="about-img reveal rl">
+          <img src="https://images.pexels.com/photos/28571826/pexels-photo-28571826.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional mechanic at work">
+        </div>
+        <div class="about-text reveal rr">
+          <p>At Cuztom Creationz, we believe in honest, transparent service backed by years of expertise. Our team doesn't just fix cars—we restore them to like-new condition, whether it's a fender bender or a complete paint overhaul.</p>
+          <ul>
+            <li><svg><use href="#i-check"/></svg> <span>Expert paint & body specialists</span></li>
+            <li><svg><use href="#i-check"/></svg> <span>State-of-the-art equipment</span></li>
+            <li><svg><use href="#i-check"/></svg> <span>All work guaranteed</span></li>
+            <li><svg><use href="#i-check"/></svg> <span>Same-day diagnostics</span></li>
+            <li><svg><use href="#i-check"/></svg> <span>Trusted in Fort Worth for years</span></li>
+          </ul>
+          <p>We treat every vehicle like it's our own and every customer like family. If we wouldn't do it to our car, we won't do it to yours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews">
+    <div class="reviews-container">
+      <h2 class="reviews-title reveal">What Our Customers Say</h2>
+      <div class="featured-review reveal">
+        <div class="stars">
+          <svg><use href="#i-star"/></svg>
+          <svg><use href="#i-star"/></svg>
+          <svg><use href="#i-star"/></svg>
+          <svg><use href="#i-star"/></svg>
+          <svg><use href="#i-star"/></svg>
+        </div>
+        <p>"Great work from Cuztom Creationz on my front bumper and grill. They delivered exactly what they promised."</p>
+        <div class="reviewer">— Satisfied Customer</div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal d1">
+          <div class="stars">
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+          </div>
+          <p>"I was referred by a friend and I will be referring all my friends and family."</p>
+          <div class="review-author">Happy Customer</div>
+        </div>
+        <div class="review-card reveal d2">
+          <div class="stars">
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+          </div>
+          <p>"Javier is an amazing mechanic! Professional, knowledgeable, and fair pricing."</p>
+          <div class="review-author">Returning Client</div>
+        </div>
+        <div class="review-card reveal d3">
+          <div class="stars">
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+          </div>
+          <p>"Excellent service and they stand behind their work. This is the place!"</p>
+          <div class="review-author">Local Resident</div>
+        </div>
+        <div class="review-card reveal d1">
+          <div class="stars">
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+          </div>
+          <p>"Got my car in and out fast. Quality work at an honest price. Highly recommend!"</p>
+          <div class="review-author">Verified Buyer</div>
+        </div>
+        <div class="review-card reveal d2">
+          <div class="stars">
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+          </div>
+          <p>"They took the time to explain everything. No surprises, just honest work."</p>
+          <div class="review-author">Loyal Customer</div>
+        </div>
+        <div class="review-card reveal d3">
+          <div class="stars">
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+            <svg><use href="#i-star"/></svg>
+          </div>
+          <p>"Best auto shop in Fort Worth. The team cares about quality and customer satisfaction."</p>
+          <div class="review-author">Repeat Client</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="faq-container">
+      <h2 class="section-title reveal">Frequently Asked Questions</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header reveal d1" onclick="toggleAccordion(this)">
+            Do I need an appointment, or can I walk in?
+            <svg><use href="#i-chevron-down"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p>You can walk in during business hours, but we recommend calling ahead to ensure we can give your vehicle the attention it deserves. Same-day appointments are often available, and scheduling ahead helps us keep your wait time minimal.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header reveal d2" onclick="toggleAccordion(this)">
+            What if I don't know what's wrong with my car?
+            <svg><use href="#i-chevron-down"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p>No problem! Bring your vehicle in, and we'll perform a thorough diagnostic. We'll identify the issue, explain it in plain language, and provide you with honest options—no pressure sales, just real solutions.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header reveal d3" onclick="toggleAccordion(this)">
+            Do you work on all car brands and models?
+            <svg><use href="#i-chevron-down"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p>Yes! Cuztom Creationz services all makes and models—domestic, foreign, luxury, trucks, and everything in between. From paint work to mechanical repairs, we have the expertise and equipment to handle your vehicle.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header reveal d1" onclick="toggleAccordion(this)">
+            How long do repairs usually take?
+            <svg><use href="#i-chevron-down"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p>It depends on the repair. Oil changes take 30-45 minutes. Paint work can take several days. Electrical and mechanical work varies. We'll give you an honest timeline up front. Most customers appreciate that we prioritize quality over rushing the job.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header reveal d2" onclick="toggleAccordion(this)">
+            Will you call me before starting work or adding costs?
+            <svg><use href="#i-chevron-down"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p>Absolutely. We never start work beyond the agreed estimate without calling you first. If we discover additional issues, we'll contact you immediately with options and pricing before proceeding. That's our guarantee of honesty.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header reveal d3" onclick="toggleAccordion(this)">
+            What forms of payment do you accept?
+            <svg><use href="#i-chevron-down"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p>We accept cash, debit cards, credit cards, and digital payments. We also work with insurance companies for covered repairs. If you have questions about payment plans or financing, give us a call and we'll find a solution that works for you.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header reveal d1" onclick="toggleAccordion(this)">
+            Can I get a second opinion on a quote from another shop?
+            <svg><use href="#i-chevron-down"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p>Of course! We're confident in our work and pricing. Bring your vehicle in for a free inspection and estimate. We'll give you an honest second opinion. Many customers find our pricing is fair and competitive—and our transparency builds trust.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Area -->
+  <section class="service-area">
+    <div class="service-area-container">
+      <div class="service-area-header">
+        <h2 class="reveal">Service Areas</h2>
+        <p class="reveal d1">We proudly serve these Fort Worth neighborhoods and surrounding areas.</p>
+      </div>
+      <div class="neighborhoods">
+        <div class="neighborhood reveal d1">
+          <h4>Downtown Fort Worth</h4>
+          <p>10–15 minutes away</p>
+        </div>
+        <div class="neighborhood reveal d2">
+          <h4>Near Southside</h4>
+          <p>5–10 minutes away</p>
+        </div>
+        <div class="neighborhood reveal d3">
+          <h4>Northside/North Fort Worth</h4>
+          <p>10–15 minutes away</p>
+        </div>
+        <div class="neighborhood reveal d1">
+          <h4>West Fort Worth</h4>
+          <p>15–20 minutes away</p>
+        </div>
+        <div class="neighborhood reveal d2">
+          <h4>Arlington</h4>
+          <p>15–20 minutes away</p>
+        </div>
+        <div class="neighborhood reveal d3">
+          <h4>Irving</h4>
+          <p>20–25 minutes away</p>
+        </div>
+        <div class="neighborhood reveal d1">
+          <h4>Grand Prairie</h4>
+          <p>20–25 minutes away</p>
+        </div>
+        <div class="neighborhood reveal d2">
+          <h4>Oak Cliff/Dallas</h4>
+          <p>15–20 minutes away</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Band -->
+  <section class="cta-band">
+    <h2>Ready to Get Your Vehicle Fixed?</h2>
+    <p>Contact Cuztom Creationz today for honest, quality service.</p>
+    <a href="tel:8178198801" class="cta-phone">(817) 819-8801</a>
+    <p style="font-size: 1rem; margin-top: 1rem; opacity: 0.9;">Mon-Fri 8am-5pm, Sat 9am-3pm</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Hours & Location</h3>
+        <table class="hours-table">
+          <tr>
+            <td>Monday–Friday</td>
+            <td>8:00 AM – 5:00 PM</td>
+          </tr>
+          <tr>
+            <td>Saturday</td>
+            <td>9:00 AM – 3:00 PM</td>
+          </tr>
+          <tr>
+            <td>Sunday</td>
+            <td>Closed</td>
+          </tr>
+        </table>
+        <h4>Address</h4>
+        <p>2617 NW 17th St Suite A<br>Fort Worth, TX 76106</p>
+        <h4>Phone</h4>
+        <p><a href="tel:8178198801" style="color: var(--orange); text-decoration: none; font-weight: 600;">(817) 819-8801</a></p>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <h3>Quick Quote Request</h3>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="vehicle">Vehicle</label>
+          <input type="text" id="vehicle" name="vehicle" placeholder="Make, model, year" required>
+        </div>
+        <div class="form-group">
+          <label for="issue">Issue Description</label>
+          <textarea id="issue" name="issue" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Request Quote</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>Cuztom Creationz</h3>
+        <p>Expert paint & body shop serving Fort Worth with honest, quality service.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact Info</h4>
+        <ul>
+          <li><a href="tel:8178198801">(817) 819-8801</a></li>
+          <li>2617 NW 17th St Suite A</li>
+          <li>Fort Worth, TX 76106</li>
+          <li><a href="https://www.google.com/maps/place/Cuztom+Creationz+Paint+%26+Body+Shop" target="_blank">View on Maps</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Cuztom Creationz Paint & Body Shop. 4.9★ (14 Reviews). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll event for nav styling
+    window.addEventListener('scroll', function() {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 30) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function() {
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when link clicked
+    mobileMenu.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+        mobileMenu.classList.remove('active');
+      }
+    });
+
+    // Scroll reveal animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal, .rl, .rr').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Accordion toggle
+    function toggleAccordion(header) {
+      const isActive = header.classList.contains('active');
+      document.querySelectorAll('.accordion-header').forEach(h => {
+        h.classList.remove('active');
+        h.nextElementSibling.classList.remove('active');
+      });
+      if (!isActive) {
+        header.classList.add('active');
+        header.nextElementSibling.classList.add('active');
+      }
+    }
+
+    // Form submission
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const vehicle = document.getElementById('vehicle').value;
+      const issue = document.getElementById('issue').value;
+      const message = `Hi Cuztom Creationz, I'm ${name} (${phone}). I have a ${vehicle} with the following issue: ${issue}. Please get back to me with a quote.`;
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/18178198801?text=${encodedMessage}`, '_blank');
+      document.querySelector('.contact-form').reset();
+    }
+  </script>
+</body>
+</html>
